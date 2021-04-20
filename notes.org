@@ -1,0 +1,13 @@
+
+Data on [[https://github.com/datacamp/careerhub-data][github]]
+
+* BMW
+
+[[https://github.com/datacamp/careerhub-data/blob/master/BMW%20Used%20Car%20Sales/bmw.csv][BMW dataset link]]
+
+#begin_src bash
+wget -O datasets/bmw.csv https://raw.githubusercontent.com/datacamp/careerhub-data/master/BMW%20Used%20Car%20Sales/bmw.csv
+#end_src
+
+
+Predict price based on other info.
