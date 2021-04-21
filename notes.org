@@ -11,3 +11,6 @@ wget -O datasets/bmw.csv https://raw.githubusercontent.com/datacamp/careerhub-da
 
 
 Predict price based on other info.
+
+
+* TODO Make diagrams showing relations between variables
