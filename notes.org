@@ -1,4 +1,5 @@
 
+
 Data on [[https://github.com/datacamp/careerhub-data][github]]
 
 * BMW
@@ -14,3 +15,35 @@ Predict price based on other info.
 
 
 * TODO Make diagrams showing relations between variables
+
+https://graphviz.readthedocs.io/en/stable/
+
+https://diagrams.mingrammer.com/
+
+
+* TODO Do Lasso and/or Ridge regression
+
+* TODO Can I make prediction intervals?
+
+There are quartile based methods, though these do not work for linear regression.
+
+https://online.stat.psu.edu/stat501/lesson/3/3.3
+
+https://github.com/shahejokarian/regression-prediction-interval/blob/master/linear%20regression%20with%20prediction%20interval.ipynb
+
+https://stats.stackexchange.com/questions/147242/how-to-calculate-the-prediction-interval-for-an-ols-multiple-regression
+
+* TODO Try some tree based method
+
+* Deps
+
+
+#+begin_src bash
+conda install numpy pandas matplotlib seaborn sklearn
+#+end_src
+
+#+begin_src bash
+pip install diagrams
+sudo apt install graphviz # for diagrams
+#+end_src
+
