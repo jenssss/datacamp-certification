@@ -4,8 +4,9 @@ from itertools import combinations
 def data_model1():
     dot = Digraph(comment="First data model")
     dot.node("m", "mileage")
+    dot.node("y", "year")
     dot.node("p", "price")
-    dot.edges(["mp"])
+    dot.edges(["mp", "yp"])
     dot.graph_attr["rankdir"] = "LR"
     return dot
 

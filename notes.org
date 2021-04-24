@@ -43,6 +43,8 @@ Training and test R^2 are quite close, so it looks like the linear
 model is not overfitting much. I'm not sure either Lasso or Ridge can
 help much.
 
+Do these with gridsearchCV
+
 * TODO Can I make prediction intervals?
 
 There are quartile based methods, though these do not work for linear regression.
