@@ -2,6 +2,15 @@
 
 Data on [[https://github.com/datacamp/careerhub-data][github]]
 
+* Structure
+
+** Motivation
+** The data
+** Metrics
+** EDA
+** Models
+** Conclusion
+
 * BMW
 
 [[https://github.com/datacamp/careerhub-data/blob/master/BMW%20Used%20Car%20Sales/bmw.csv][BMW dataset link]]
@@ -22,6 +31,10 @@ https://diagrams.mingrammer.com/
 
 
 * TODO Do Lasso and/or Ridge regression
+
+Training and test R^2 are quite close, so it looks like the linear
+model is not overfitting much. I'm not sure either Lasso or Ridge can
+help much.
 
 * TODO Can I make prediction intervals?
 
