@@ -55,7 +55,18 @@ https://github.com/shahejokarian/regression-prediction-interval/blob/master/line
 
 https://stats.stackexchange.com/questions/147242/how-to-calculate-the-prediction-interval-for-an-ols-multiple-regression
 
+Using statsmodel?
+
+https://stackoverflow.com/questions/17559408/confidence-and-prediction-intervals-with-statsmodels/47191929#47191929
+
+https://www.statsmodels.org/dev/generated/statsmodels.regression.linear_model.OLSResults.get_prediction.html
+
+https://www.reddit.com/r/MachineLearning/comments/3raivl/code_to_calculate_confidence_interval_for_linear/
+
+
 * TODO Try some tree based method
+
+* TODO Get name of the category dropped by onehotencoder
 
 * Deps
 
