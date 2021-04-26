@@ -68,6 +68,14 @@ https://www.reddit.com/r/MachineLearning/comments/3raivl/code_to_calculate_confi
 
 * TODO Get name of the category dropped by onehotencoder
 
+* TODO Deploy as REST
+
+https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166
+
+#begin_src bash
+  curl -X GET http://127.0.0.1:5000/ -d query='that movie was boring'
+#end_src
+
 * Deps
 
 

@@ -27,3 +27,11 @@ For making the diagrams the following dependencies are needed
 pip install diagrams
 sudo apt install graphviz # for Ubuntu
 ```
+
+
+## Running the webserver
+
+The flask and flask-restful packages are needed to run the webserver
+```
+conda install flask flask-restful
+```
