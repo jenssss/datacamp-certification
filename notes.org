@@ -73,8 +73,12 @@ https://www.reddit.com/r/MachineLearning/comments/3raivl/code_to_calculate_confi
 https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166
 
 #begin_src bash
-  curl -X GET http://127.0.0.1:5000/ -d query='that movie was boring'
+  curl -X GET http://127.0.0.1:5000/ -d query='20'
 #end_src
+
+Getting flask and fetch to play nice
+
+https://stackoverflow.com/questions/63502630/how-to-use-fetch-to-get-post-data-from-flask
 
 * Deps
 

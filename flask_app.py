@@ -2,6 +2,7 @@
 import json
 
 from flask import Flask
+from flask import render_template, send_from_directory, send_file #, request, make_response, jsonify
 from flask_restful import reqparse, abort, Api, Resource
 from pickle import load
 import numpy as np
@@ -17,17 +18,31 @@ model_dump_file = "bmw_linreg_model.pckl"
 with open(model_dump_file, "rb") as file_:
     models = load(file_)
 
+# @app.route("/", methods=["POST"])
+# def create_entry():
+
+#     req = request.get_json()
+
+#     print(req)
+
+#     res = make_response(jsonify(req), 200)
+
+#     return res
+
+    
 # argument parsing
 parser = reqparse.RequestParser()
-parser.add_argument("query")
+parser.add_argument("query", required=True)
 
 
-class PredictSentiment(Resource):
-    def get(self):
+class PredictPrice(Resource):
+    def post(self):
+        # print(self.body)
         # use parser and find the user's query
         args = parser.parse_args()
+        print("args", args)
         user_query = args["query"]
-
+        print(user_query)
         user_query = json.loads(user_query)
         # vectorize the user's query and make a prediction
         print("user_query", user_query)
@@ -41,7 +56,20 @@ class PredictSentiment(Resource):
 
 # Setup the Api resource routing here
 # Route the URL to the resource
-api.add_resource(PredictSentiment, "/")
+api.add_resource(PredictPrice, "/")
+
+
+@app.route('/bmw_pricer')
+def send_price():
+    return send_file("predict_price.html")
+
+@app.route('/bmw_fetcher.js')
+def send_js():
+    return send_file("bmw_fetcher.js")
+
+# @app.route("/bmw_price")
+# def guestbook():
+#     return render_template("./predict_price.html")
 
 
 if __name__ == "__main__":
