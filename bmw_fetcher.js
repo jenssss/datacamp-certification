@@ -1,7 +1,19 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // const url = 'http://127.0.0.1:5000/';
+
+    
     const url = 'https://fathomless-cove-96970.herokuapp.com/';
+
+    function append_paragraph_to_form(text){
+	const form = document.querySelector('form');
+	var para = document.createElement("p");
+	var node = document.createTextNode(text);
+	para.appendChild(node);
+	form.parentNode.insertBefore(para, form.nextSibling);
+    }
+    
+    
     function handleSubmit(event) {
 	event.preventDefault();
 	const data = new FormData(event.target);
@@ -39,29 +51,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	    // .then(response => console.log(response))
 	    .then(response => response.text())
 	    .then(myText => {
-		
-	    	// console.log(myJson);
-		const form = document.querySelector('form');
-		var para = document.createElement("p");
-		var node = document.createTextNode(myText);
-		para.appendChild(node);
-		form.parentNode.insertBefore(para, form.nextSibling);
+		append_paragraph_to_form(myText);
 
-	    })
-	;
+	    }).catch((error) => {
+		console.error('Error:', error);
+		append_paragraph_to_form(error)
+
+	    });;
 
 	}
 	else
 	{
-		var para = document.createElement("p");
-		var node = document.createTextNode("Please provide some more info");
-		para.appendChild(node);
-		form.parentNode.insertBefore(para, form.nextSibling);
+	    append_paragraph_to_form("Please provide some more info");
 	    console.log("No data provided");
 	}
     }
 
-    const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "year": {"type": "numeric", "range": [1996.0, 2020.0]}, "engineSize": {"type": "numeric", "range": [1.5, 6.6]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i3", " i8"]}, "transmission": {"type": "category", "values": ["Automatic", "Manual", "Semi-Auto"]}}
+    const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "year": {"type": "numeric", "range": [1996.0, 2020.0]}, "engineSize": {"type": "numeric", "range": [1.5, 6.6]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i8"]}, "transmission": {"type": "category", "values": ["Automatic", "Manual", "Semi-Auto"]}}
 
     // const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i3", " i8"]}};
 

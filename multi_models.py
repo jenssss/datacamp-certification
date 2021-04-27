@@ -79,7 +79,6 @@ def eval_model(models, **kwargs):
 
 
 def pretty_print_prediction(prediction):
-    print(prediction)
     price = float(prediction["price"])
     low_bound = float(prediction["90% lower bound"])
     upper_bound = float(prediction["90% upper bound"])
