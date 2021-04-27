@@ -2,7 +2,8 @@
 import json
 
 from flask import Flask
-from flask import render_template, send_from_directory, send_file #, request, make_response, jsonify
+from flask import render_template, send_from_directory, send_file
+from flask import request, make_response, jsonify
 from flask_restful import reqparse, abort, Api, Resource
 from pickle import load
 import numpy as np
@@ -35,23 +36,37 @@ parser = reqparse.RequestParser()
 parser.add_argument("query", required=True)
 
 
+def pretty_print_prediction(prediction):
+    print(prediction)
+    price = float(prediction["price"])
+    low_bound = float(prediction["95% lower bound"])
+    upper_bound = float(prediction["95% upper bound"])
+    return f"Price: {price:.0f}$, 95% of prices between {low_bound:.0f}$ and {upper_bound:.0f}$"
+
+
 class PredictPrice(Resource):
     def post(self):
         # print(self.body)
         # use parser and find the user's query
+
         args = parser.parse_args()
-        print("args", args)
+        # print("args", args)
         user_query = args["query"]
-        print(user_query)
+        # print(user_query)
         user_query = json.loads(user_query)
         # vectorize the user's query and make a prediction
-        print("user_query", user_query)
+        # print("user_query", user_query)
         prediction = eval_model(models, **user_query)
 
         # create JSON object
-        output = {"prediction": str(prediction)}
-
-        return output
+        # output = {"prediction": pretty_print_prediction(prediction)}
+        output = pretty_print_prediction(prediction)
+        response = make_response(output)
+        if request.environ['HTTP_ORIGIN'] is not None:
+            origin = request.environ['HTTP_ORIGIN']
+            print("origin", origin)
+            response.headers.add("access-control-allow-origin", origin) # "http://127.0.0.1:5000/")
+        return response
 
 
 # Setup the Api resource routing here
