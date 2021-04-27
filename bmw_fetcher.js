@@ -1,5 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+    const url = 'http://127.0.0.1:5000/';
+
     function handleSubmit(event) {
 	event.preventDefault();
 	const data = new FormData(event.target);
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	const myheaders = new Headers();
 	// myheaders.append('Access-Control-Allow-Origin', '*')
 	myheaders.append('Content-Type', 'application/json')
-	const myRequest = new Request('http://127.0.0.1:5000/', {
+	const myRequest = new Request(url, {
 	    method: 'POST',
 	    mode: 'cors',
 	    // mode: 'same-origin',
@@ -133,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	    form.appendChild(button);
     }
 
-    
     const form = document.querySelector('form');
     build_form(feature_ranges, form);
     
