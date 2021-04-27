@@ -1,6 +1,4 @@
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     function handleSubmit(event) {
 	event.preventDefault();

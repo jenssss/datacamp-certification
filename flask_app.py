@@ -74,13 +74,13 @@ class PredictPrice(Resource):
 api.add_resource(PredictPrice, "/")
 
 
-@app.route('/bmw_pricer')
-def send_price():
-    return send_file("predict_price.html")
+# @app.route('/bmw_pricer')
+# def send_price():
+#     return send_file("predict_price.html")
 
-@app.route('/bmw_fetcher.js')
-def send_js():
-    return send_file("bmw_fetcher.js")
+# @app.route('/bmw_fetcher.js')
+# def send_js():
+#     return send_file("bmw_fetcher.js")
 
 # @app.route("/bmw_price")
 # def guestbook():

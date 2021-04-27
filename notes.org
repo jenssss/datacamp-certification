@@ -80,8 +80,14 @@ Getting flask and fetch to play nice
 
 https://stackoverflow.com/questions/63502630/how-to-use-fetch-to-get-post-data-from-flask
 
+
+
 * Deps
 
+
+#+begin_src bash
+pip install flask flask-restful
+#+end_src
 
 #+begin_src bash
 conda install numpy pandas matplotlib seaborn sklearn
