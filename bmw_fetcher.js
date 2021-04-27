@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    const url = 'http://127.0.0.1:5000/';
-
+    // const url = 'http://127.0.0.1:5000/';
+    const url = 'https://fathomless-cove-96970.herokuapp.com/';
     function handleSubmit(event) {
 	event.preventDefault();
 	const data = new FormData(event.target);
