@@ -8,7 +8,7 @@ from flask_restful import reqparse, Api, Resource
 from pickle import load
 import numpy as np
 
-from multi_models import eval_model
+from multi_models import eval_model, pretty_print_prediction
 
 
 app = Flask(__name__)
@@ -23,14 +23,6 @@ with open(model_dump_file, "rb") as file_:
 # argument parsing
 parser = reqparse.RequestParser()
 parser.add_argument("query", required=True)
-
-
-def pretty_print_prediction(prediction):
-    print(prediction)
-    price = float(prediction["price"])
-    low_bound = float(prediction["95% lower bound"])
-    upper_bound = float(prediction["95% upper bound"])
-    return f"Price: {price:.0f}$, 95% of prices between {low_bound:.0f}$ and {upper_bound:.0f}$"
 
 
 class PredictPrice(Resource):

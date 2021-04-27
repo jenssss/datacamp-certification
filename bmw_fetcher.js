@@ -25,32 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	const myRequest = new Request(url, {
 	    method: 'POST',
 	    mode: 'cors',
-	    // mode: 'same-origin',
 	    headers: {
-                    // 'Content-Type': 'application/json',
 	    	'Content-Type': 'application/x-www-form-urlencoded',
                 },
-	    // headers: myheaders,
-	    // headers: {
-	    // 	'Content-Type': 'application/json',
-	    // 	// 'Access-Control-Allow-Origin': 'http://127.0.0.1:5000/'
-	    // 	'Access-Control-Allow-Origin': '*'
-	    // },
-	    // Access-Control-Allow-Origin: "http://127.0.0.1:5000/",
 	    cache: 'no-cache',
-	    // body: data,
 	    body: new URLSearchParams({
                 'query':
-		// {mileage}
 		json,
-		// JSON.stringify({mileage}),
                 }),
-	    // body: JSON.stringify({query: {mileage: mileage}}),
-	    // body: {query: JSON.stringify({mileage})},
-	    // query: {mileage}
 	});
 	
-	//console.log(myRequest);
 	fetch(myRequest)
 	    // .then(response => console.log(response))
 	    .then(response => response.text())
@@ -69,7 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	else
 	{
-	    console.log("No data provided")
+		var para = document.createElement("p");
+		var node = document.createTextNode("Please provide some more info");
+		para.appendChild(node);
+		form.parentNode.insertBefore(para, form.nextSibling);
+	    console.log("No data provided");
 	}
     }
 
@@ -129,10 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	    }
 	}
-	    var button = document.createElement("button");
-	    button.setAttribute("type", "submit");
-	    button.innerHTML = "Submit";
-	    form.appendChild(button);
+	var button = document.createElement("button");
+	button.setAttribute("type", "submit");
+	button.innerHTML = "Submit";
+	form.appendChild(button);
     }
 
     const form = document.querySelector('form');

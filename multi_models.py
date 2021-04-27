@@ -5,7 +5,7 @@ import pandas as pd
 from scipy.stats import t
 
 
-def calc_prediction_delta(y, y_pred, alpha=0.95, print_ratio_captured=False):
+def calc_prediction_delta(y, y_pred, alpha=0.90, print_ratio_captured=False):
     n = len(y)
     resid = y - y_pred
     mean_resid = np.mean(y - y_pred)
@@ -32,8 +32,8 @@ def train_set_of_models(features, bmw, dependent="log price"):
         X = bmw[list(feature_set)]
         y = bmw[dependent]
         linreg_local.fit(X, y)
-        dy = calc_prediction_delta(y, linreg_local.predict(X), alpha=0.95)
-        models[feature_set] = {"model": linreg_local, "dy_95": dy}
+        dy = calc_prediction_delta(y, linreg_local.predict(X), alpha=0.90)
+        models[feature_set] = {"model": linreg_local, "dy_90": dy}
     return models
 
 
@@ -57,7 +57,7 @@ def eval_model(models, **kwargs):
     chosen_features = tuple(feature for feature in features if feature in kwargs)
     model_holder = models[chosen_features]
     model = model_holder["model"]
-    dy = model_holder["dy_95"]
+    dy = model_holder["dy_90"]
 
     values = (scalar_to_list(kwargs[feature]) for feature in chosen_features)
     X = pd.DataFrame(
@@ -69,10 +69,18 @@ def eval_model(models, **kwargs):
         )
     )
     price = np.power(10, model.predict(X))
-    lower_95 = np.power(10, model.predict(X) - dy)
-    upper_95 = np.power(10, model.predict(X) + dy)
+    lower_90 = np.power(10, model.predict(X) - dy)
+    upper_90 = np.power(10, model.predict(X) + dy)
     price_w_interval = pd.DataFrame(
-        {"price": price, "95% lower bound": lower_95, "95% upper bound": upper_95}
+        {"price": price, "90% lower bound": lower_90, "90% upper bound": upper_90}
     )
 
     return price_w_interval
+
+
+def pretty_print_prediction(prediction):
+    print(prediction)
+    price = float(prediction["price"])
+    low_bound = float(prediction["90% lower bound"])
+    upper_bound = float(prediction["90% upper bound"])
+    return f"Price: {price:.0f}$, 90% of prices between {low_bound:.0f}$ and {upper_bound:.0f}$"
