@@ -62,7 +62,7 @@ class PredictPrice(Resource):
         # output = {"prediction": pretty_print_prediction(prediction)}
         output = pretty_print_prediction(prediction)
         response = make_response(output)
-        if request.environ['HTTP_ORIGIN'] is not None:
+        if 'HTTP_ORIGIN' in request.environ and request.environ['HTTP_ORIGIN'] is not None:
             origin = request.environ['HTTP_ORIGIN']
             print("origin", origin)
             response.headers.add("access-control-allow-origin", origin) # "http://127.0.0.1:5000/")
