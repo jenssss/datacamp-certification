@@ -2,3 +2,6 @@ flask
 flask-restful
 numpy
 sklearn
+pandas
+scipy
+
