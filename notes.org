@@ -2,6 +2,21 @@
 
 Data on [[https://github.com/datacamp/careerhub-data][github]]
 
+* Feature table
+
+| Feature        | Description              | Type   |
+| :------------- | :---------               | :---------- |
+| model          | Car model                | categorical |
+| year           | Build year               | numerical   |
+| price          | Price in USD             | numerical   |
+| transmission   | Type of transmission     | categorical |
+| mileage        | Distance driven in miles | numerical   |
+| fuelType       | Fuel type                | categorical |
+| tax            | Road tax                 | numerical   |
+| mpg            | Miles per gallon         | numerical   |
+| engineSize     | Size of engine           | numerical   |
+
+
 * Structure
 
 ** Motivation

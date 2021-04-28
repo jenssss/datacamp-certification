@@ -22,9 +22,9 @@ environment first)
 conda install numpy pandas matplotlib seaborn sklearn
 ```
 
-For making the diagrams the following dependencies are needed
+For making the diagrams, graphviz is needed. To install in e.g. Ubuntu use
 ```
-pip install diagrams
+pip install graphviz
 sudo apt install graphviz # for Ubuntu
 ```
 
