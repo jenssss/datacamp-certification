@@ -35,3 +35,16 @@ The flask and flask-restful packages are needed to run the webserver
 ```
 conda install flask flask-restful
 ```
+
+Before running the server, the notebook needs to be run, to output the
+`bmw_linreg_model.pckl` file which is needed by the webserver. The
+server can then by run using
+```
+python flask_app.py
+```
+
+In production the server should be run through a WSGI layer, using
+e.g. gunicorn (installable as `pip install gunicorn`) as
+```
+gunicorn flask_app:app
+```

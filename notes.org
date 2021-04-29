@@ -4,7 +4,7 @@ Data on [[https://github.com/datacamp/careerhub-data][github]]
 
 * Feature table
 
-| Feature        | Description              | Type   |
+| Feature        | Description              | Type        |
 | :------------- | :---------               | :---------- |
 | model          | Car model                | categorical |
 | year           | Build year               | numerical   |
