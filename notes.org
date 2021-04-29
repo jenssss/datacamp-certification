@@ -5,6 +5,10 @@ Data on [[https://github.com/datacamp/careerhub-data][github]]
 Generally about linear model metrics
 https://towardsdatascience.com/evaluation-metrics-model-selection-in-linear-regression-73c7573208be
 
+Looked into adjusted R^2, but since the number of samples is way
+larger than the number of variables, it is essentially the same as
+normal R^2
+
 * Feature table
 
 | Feature        | Description              | Type        |
@@ -109,6 +113,7 @@ pip install flask flask-restful
 
 #+begin_src bash
 conda install numpy pandas matplotlib seaborn sklearn
+conda install statsmodels # for lowess in resid plot
 #+end_src
 
 #+begin_src bash
