@@ -2,6 +2,9 @@
 
 Data on [[https://github.com/datacamp/careerhub-data][github]]
 
+Generally about linear model metrics
+https://towardsdatascience.com/evaluation-metrics-model-selection-in-linear-regression-73c7573208be
+
 * Feature table
 
 | Feature        | Description              | Type        |
@@ -45,14 +48,14 @@ wget -O datasets/bmw.csv https://raw.githubusercontent.com/datacamp/careerhub-da
 Predict price based on other info.
 
 
-* TODO Make diagrams showing relations between variables
+* DONE Make diagrams showing relations between variables
 
 https://graphviz.readthedocs.io/en/stable/
 
 https://diagrams.mingrammer.com/
 
 
-* TODO Do Lasso and/or Ridge regression
+* DONE Do Lasso and/or Ridge regression
 
 Training and test R^2 are quite close, so it looks like the linear
 model is not overfitting much. I'm not sure either Lasso or Ridge can
@@ -60,7 +63,7 @@ help much.
 
 Do these with gridsearchCV
 
-* TODO Can I make prediction intervals?
+* DONE Can I make prediction intervals?
 
 There are quartile based methods, though these do not work for linear regression.
 
@@ -83,7 +86,7 @@ https://www.reddit.com/r/MachineLearning/comments/3raivl/code_to_calculate_confi
 
 * TODO Get name of the category dropped by onehotencoder
 
-* TODO Deploy as REST
+* DONE Deploy as REST
 
 https://towardsdatascience.com/deploying-a-machine-learning-model-as-a-rest-api-4a03b865c166
 
