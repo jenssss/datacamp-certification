@@ -8,17 +8,13 @@ from flask_restful import reqparse, Api, Resource
 from pickle import load
 import numpy as np
 
-from multi_models import eval_model, pretty_print_prediction
+from multi_models import eval_model, pretty_print_prediction, load_models
 
 
 app = Flask(__name__)
 api = Api(app)
 
-
-model_dump_file = "bmw_linreg_model.pckl"
-with open(model_dump_file, "rb") as file_:
-    models = load(file_)
-
+models = load_models()
     
 # argument parsing
 parser = reqparse.RequestParser()
