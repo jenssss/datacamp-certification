@@ -9,6 +9,10 @@ Looked into adjusted R^2, but since the number of samples is way
 larger than the number of variables, it is essentially the same as
 normal R^2
 
+* TODO Plots of categorical variables
+
+Against price I guess
+
 * Feature table
 
 | Feature        | Description              | Type        |
