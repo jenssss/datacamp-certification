@@ -39,7 +39,7 @@ def calc_prediction_delta(y, y_pred, alpha=0.90, print_ratio_captured=False):
     if print_ratio_captured:
         print(
             "Ratio of values inside prediction interval:"
-            + " {:.2f}, mean residual {:.2g}".format(
+            + " {:.2f}, mean residual: {:.2g}".format(
                 np.mean(np.abs(resid + mean_resid) < dy), mean_resid
             )
         )
@@ -123,7 +123,7 @@ def pretty_print_prediction(prediction):
     price = float(prediction["price"])
     low_bound = float(prediction["90% lower bound"])
     upper_bound = float(prediction["90% upper bound"])
-    return f"Price: ${price:,.0f}, 90% of prices between ${low_bound:,.0f} and ${upper_bound:,.0f}$"
+    return f"Price: ${price:,.0f}\n90% of prices between ${low_bound:,.0f} and ${upper_bound:,.0f}$"
 
 
 def extract_feature_ranges(df):

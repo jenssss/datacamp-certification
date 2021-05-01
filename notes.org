@@ -9,7 +9,11 @@ Looked into adjusted R^2, but since the number of samples is way
 larger than the number of variables, it is essentially the same as
 normal R^2
 
-* TODO Plots of categorical variables
+* TODO Are pair plots too small?
+
+* TODO Fix dollar signs in latex output
+
+* DONE Plots of categorical variables
 
 Against price I guess
 
@@ -90,7 +94,7 @@ https://www.statsmodels.org/dev/generated/statsmodels.regression.linear_model.OL
 https://www.reddit.com/r/MachineLearning/comments/3raivl/code_to_calculate_confidence_interval_for_linear/
 
 
-* TODO Try some tree based method
+* DONE Try some tree based method
 
 * TODO Get name of the category dropped by onehotencoder
 
