@@ -1,9 +1,8 @@
 # BMW sale price project
 
 The report is in `bmw_analysis.pdf`. The main source file is the
-notebook `bmw_analysis.ipynb`. Functions for creating diagrams are
-contained in the `draw_diagrams.py` file. This file should be in the
-same directory as the notebook file when it is run.
+notebook `bmw_analysis.ipynb`. A number of supporting python files are
+needed to run the notebook.
 
 
 ## Prerequisites
@@ -22,16 +21,21 @@ environment first)
 conda install numpy pandas matplotlib seaborn sklearn
 ```
 
-For making the diagrams, graphviz is needed. To install in e.g. Ubuntu use
+For making the diagrams (optional), the `draw_diagrams.py` file should
+be in the same directory as the notebook file, and graphviz is
+needed. To install in e.g. Ubuntu use
+
 ```
 pip install graphviz
 sudo apt install graphviz # for Ubuntu
 ```
 
 
-## Running the webserver
+## Running the webserver (optional)
 
-The flask and flask-restful packages are needed to run the webserver
+The flask and flask-restful packages are needed to run the webserver,
+in addition to the dependencies mentioned above
+
 ```
 conda install flask flask-restful
 ```
@@ -48,3 +52,18 @@ e.g. gunicorn (installable as `pip install gunicorn`) as
 ```
 gunicorn flask_app:app
 ```
+
+An example front end is implemented in the `predict_price.html` and
+`bmw_fetcher.js` files. The front end should work should work by
+simply opening the html file in a browser, while the javascript script
+is in the same directory. The response after the first query might
+take around 10 seconds to load, but subsequent requests should be
+faster.
+
+The `bmw_fetcher.js` has the URL for a version
+of the flask app deployed to Heroku hardcoded into it, as well as the
+feature ranges from the `feature_ranges.json` output file from the
+notebook. If you want to test against a locally run server, or retrain
+the model with new features, the relevant variables in
+`bmw_fetcher.js` should be adjusted correspondingly.
+

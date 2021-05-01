@@ -23,8 +23,6 @@ parser.add_argument("query", required=True)
 
 class PredictPrice(Resource):
     def post(self):
-        # print(self.body)
-        # use parser and find the user's query
 
         args = parser.parse_args()
         user_query = args["query"]

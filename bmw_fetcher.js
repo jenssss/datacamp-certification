@@ -1,10 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // const url = 'http://127.0.0.1:5000/';
-
-    
     const url = 'https://fathomless-cove-96970.herokuapp.com/';
 
+    const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "year": {"type": "numeric", "range": [1996.0, 2020.0]}, "engineSize": {"type": "numeric", "range": [1.5, 6.6]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i8"]}, "transmission": {"type": "category", "values": ["Automatic", "Manual", "Semi-Auto"]}}
+    
     function append_paragraph_to_form(text){
 	const form = document.querySelector('form');
 	var para = document.createElement("p");
@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	event.preventDefault();
 	const data = new FormData(event.target);
 	const mileage = data.get('mileage');
-	// data.append("query", "lol");
-	// console.log({ mileage });
 
 	var object = {};
 	data.forEach(function(value, key){
@@ -28,36 +26,36 @@ document.addEventListener('DOMContentLoaded', function() {
 	    }
 	});
 	if (Object.keys(object).length !== 0){
-	var json = JSON.stringify(object);
-	console.log(json);
-	
-	const myheaders = new Headers();
-	// myheaders.append('Access-Control-Allow-Origin', '*')
-	myheaders.append('Content-Type', 'application/json')
-	const myRequest = new Request(url, {
-	    method: 'POST',
-	    mode: 'cors',
-	    headers: {
-	    	'Content-Type': 'application/x-www-form-urlencoded',
+	    var json = JSON.stringify(object);
+	    console.log(json);
+	    
+	    const myheaders = new Headers();
+
+	    myheaders.append('Content-Type', 'application/json')
+	    const myRequest = new Request(url, {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+	    	    'Content-Type': 'application/x-www-form-urlencoded',
                 },
-	    cache: 'no-cache',
-	    body: new URLSearchParams({
-                'query':
-		json,
+		cache: 'no-cache',
+		body: new URLSearchParams({
+                    'query':
+		    json,
                 }),
-	});
-	
-	fetch(myRequest)
+	    });
+	    
+	    fetch(myRequest)
 	    // .then(response => console.log(response))
-	    .then(response => response.text())
-	    .then(myText => {
-		append_paragraph_to_form(myText);
+		.then(response => response.text())
+		.then(myText => {
+		    append_paragraph_to_form(myText);
 
-	    }).catch((error) => {
-		console.error('Error:', error);
-		append_paragraph_to_form(error)
+		}).catch((error) => {
+		    console.error('Error:', error);
+		    append_paragraph_to_form(error)
 
-	    });;
+		});;
 
 	}
 	else
@@ -67,9 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
     }
 
-    const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "year": {"type": "numeric", "range": [1996.0, 2020.0]}, "engineSize": {"type": "numeric", "range": [1.5, 6.6]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i8"]}, "transmission": {"type": "category", "values": ["Automatic", "Manual", "Semi-Auto"]}}
-
-    // const feature_ranges = {"mileage": {"type": "numeric", "range": [1.0, 214000.0]}, "model": {"type": "category", "values": [" 1 Series", " 2 Series", " 3 Series", " 4 Series", " 5 Series", " 6 Series", " 7 Series", " 8 Series", " M2", " M3", " M4", " M5", " X1", " X2", " X3", " X4", " X5", " X6", " X7", " Z4", " i3", " i8"]}};
 
     function build_number_input(key, feature){
 	var x = document.createElement("INPUT");
@@ -133,6 +128,5 @@ document.addEventListener('DOMContentLoaded', function() {
     build_form(feature_ranges, form);
     
     form.addEventListener('submit', handleSubmit);
+   
 }, false);
-
-
