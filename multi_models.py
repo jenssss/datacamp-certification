@@ -123,7 +123,7 @@ def pretty_print_prediction(prediction):
     price = float(prediction["price"])
     low_bound = float(prediction["90% lower bound"])
     upper_bound = float(prediction["90% upper bound"])
-    return f"Price: ${price:.0f}, 90% of prices between ${low_bound:.0f} and ${upper_bound:.0f}$"
+    return f"Price: ${price:,.0f}, 90% of prices between ${low_bound:,.0f} and ${upper_bound:,.0f}$"
 
 
 def extract_feature_ranges(df):

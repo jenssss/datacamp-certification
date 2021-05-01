@@ -1,8 +1,7 @@
 # BMW sale price project
 
 The report is in `bmw_analysis.pdf`. The main source file is the
-notebook `bmw_analysis.ipynb`. A number of supporting python files are
-needed to run the notebook.
+notebook `bmw_analysis.ipynb`.
 
 
 ## Prerequisites
@@ -20,6 +19,8 @@ environment first)
 ```
 conda install numpy pandas matplotlib seaborn sklearn
 ```
+
+The project also depends on the local `multi_model.py` module.
 
 For making the diagrams (optional), the `draw_diagrams.py` file should
 be in the same directory as the notebook file, and graphviz is
