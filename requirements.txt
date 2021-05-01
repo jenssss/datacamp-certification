@@ -1,7 +1,7 @@
 flask
 flask-restful
 numpy
-sklearn
+scikit-learn
 pandas
 scipy
 gunicorn
