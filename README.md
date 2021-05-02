@@ -17,7 +17,7 @@ Dependencies can be installed using (optionally making a new conda
 environment first)
 
 ```
-conda install numpy pandas matplotlib seaborn sklearn
+conda install numpy pandas matplotlib seaborn scikit-learn notebook
 ```
 
 The project also depends on the local `multi_model.py` module.

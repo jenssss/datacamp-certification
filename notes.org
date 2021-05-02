@@ -11,6 +11,11 @@ normal R^2
 
 * DONE Are pair plots too small?
 
+* Source files for packing
+#+begin_src bash
+zip source.zip bmw_analysis.ipynb multi_models.py Procfile bmw_fetcher.js draw_diagrams.py README.md bmw_linreg_model.pckl flask_app.py predict_price.html requirements.txt
+#+end_src
+
 * DONE Fix dollar signs in latex output
 
 #+begin_src bash
@@ -125,7 +130,7 @@ pip install flask flask-restful
 #+end_src
 
 #+begin_src bash
-conda install numpy pandas matplotlib seaborn sklearn
+conda install numpy pandas matplotlib seaborn scikit-learn
 conda install statsmodels # for lowess in resid plot
 #+end_src
 
