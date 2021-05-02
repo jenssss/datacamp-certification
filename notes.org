@@ -9,9 +9,14 @@ Looked into adjusted R^2, but since the number of samples is way
 larger than the number of variables, it is essentially the same as
 normal R^2
 
-* TODO Are pair plots too small?
+* DONE Are pair plots too small?
 
-* TODO Fix dollar signs in latex output
+* DONE Fix dollar signs in latex output
+
+#+begin_src bash
+sed -i "s/\\\\textbackslash\\\\\\$/\\\\$/g" bmw_analysis.tex
+pdflatex bmw_analysis.tex
+#+end_src
 
 * DONE Plots of categorical variables
 
