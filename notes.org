@@ -9,6 +9,14 @@ Looked into adjusted R^2, but since the number of samples is way
 larger than the number of variables, it is essentially the same as
 normal R^2
 
+* Selective export/export figures
+
+Removing cells
+https://nbconvert.readthedocs.io/en/latest/removing_cells.html
+
+Extracting figures
+https://nbconvert.readthedocs.io/en/latest/nbconvert_library.html
+
 * DONE Are pair plots too small?
 
 * Source files for packing

@@ -1,0 +1,110 @@
+#+TITLE: Predicting prices of used BMW cars
+# #+SUBTITLE: Datacamp certification presentation
+#+DATE: May 3, 2021
+
+# #+REVEAL_MATHJAX_URL: file:///home/jens/.web_static/MathJax-latest/es5/tex-chtml.js
+# # ?config=TeX-AMS-MML_HTMLorMML
+#+OPTIONS: num:nil toc:nil
+# #+REVEAL_THEME: solarized
+# #+REVEAL_THEME: black
+#+REVEAL_THEME: white
+# #+REVEAL_THEME: league
+# #+REVEAL_THEME: beige
+# #+REVEAL_THEME: sky
+# #+REVEAL_THEME: night
+# #+REVEAL_THEME: serif
+# #+REVEAL_THEME: blood
+# #+REVEAL_THEME: simple
+# #+REVEAL_THEME: solarized
+# #+REVEAL_THEME: moon
+#+REVEAL_ROOT: file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/
+# #+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/
+# #+REVEAL_PREAMBLE: <style type="text/css">   .reveal h1 { font-size: 1.7em;text-align: left } .reveal h2 { text-align: left } </style>  <style type="text/css"> .twocolumn { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px; text-align: left; }  </style>
+#+REVEAL_TITLE_SLIDE: <h1 class="title"> %t </h1>
+# #+REVEAL_TITLE_SLIDE: <h3 class=\"subtitle\"> %s </h2>
+#+REVEAL_TITLE_SLIDE: <h2 class=\"author\"> %a </h2>
+#+REVEAL_TITLE_SLIDE: <p class=\"date\"> %d <p>
+# #+REVEAL_TITLE_SLIDE: <h1 class="title"> %t </h1>
+# #+REVEAL_TITLE_SLIDE: <p style="text-align: right; font-weight: bold; font-size: 1.1em"> %a </p>
+# #+REVEAL_TITLE_SLIDE: <p style="text-align: left;" class="date"> %d <p>
+
+
+# #+startup: beamer
+# #+LaTeX_CLASS: beamer
+# #+LaTeX_CLASS_OPTIONS: [bigger]
+# #+BEAMER_FRAME_LEVEL: 2
+# #+OPTIONS: reveal_height:"100" reveal_width:"100"
+# #+OPTIONS: reveal_title_sli:" lol "
+#+MACRO: NEWLINE @@latex:\\@@ @@html:<br>@@ @@ascii:|@@
+
+* My background
+
+** Education
+
+#+ATTR_REVEAL: :frag (appear)
+- PhD from Aarhus University, Denmark (2016)
+- Theoretical physics
+
+** Work
+
+#+ATTR_REVEAL: :frag (appear)
+- Postdoc at Kansas State University (2017)
+- Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)
+
+
+* Motivation
+
+** Background
+
+#+ATTR_REVEAL: :frag (appear)
+- Cars are used throughout the world
+- Big resale market (due to cost and durability)
+- Typical consumers have no clear idea about car prices
+- Makes navigating the market and negotiating with car dealers difficult
+
+** Goal
+
+#+ATTR_REVEAL: :frag (appear)
+- Predict resale prices of cars based on historic data
+- Make predictions available to consumers
+
+* Data
+
+** Source
+
+#+ATTR_REVEAL: :frag (appear)
+- Provided by datacamp
+- No details about collection known
+
+** Features
+
+| Feature    | Description      | Type      |
+|------------+------------------+-----------|
+| price      | Price in USD     | numerical |
+| year       | Production year  | numerical |
+| mileage    | Distance driven  | numerical |
+| tax        | Road tax         | numerical |
+| mpg        | Miles per gallon | numerical |
+| engineSize | Size of engine   | numerical |
+
+#+reveal: split
+
+| Feature      | Description          | Type        |
+|--------------+----------------------+-------------|
+| model        | Car model            | categorical |
+| transmission | Type of transmission | categorical |
+| fuelType     | Fuel type            | categorical |
+
+
+
+* Metrics
+
+* EDA
+
+** Exploration
+
+** Cleaning
+
+* Model
+
+* Conclusion
