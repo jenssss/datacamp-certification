@@ -95,6 +95,19 @@
 | transmission | Type of transmission | categorical |
 | fuelType     | Fuel type            | categorical |
 
+** Data model 1
+
+#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/data_model1.svg
+
+
+** Data model 2
+
+file:figures/data_model2.svg
+
+** Data model 3
+
+file:figures/data_model3.svg
 
 
 * Metrics
@@ -102,6 +115,23 @@
 * EDA
 
 ** Exploration
+
+** Price of year and mileage
+
+#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/price_of_year_mileage.png
+
+
+** Price of tax, mpg and engine size
+
+#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/price_of_tax_mpg_enginesize.png
+
+** Price of fuel type
+
+#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/price_of_fueltype.svg
+
 
 ** Cleaning
 

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from traitlets.config import Config
 from traitlets import Unicode
 import nbformat as nbf
@@ -21,20 +23,21 @@ c.ExtractOutputPreprocessor.output_filename_template = "{unique_key}_{cell_index
 # Configure and run out exporter
 c.PDFExporter.preprocessors = ["nbconvert.preprocessors.TagRemovePreprocessor"]
 
-c.PDFExporter.preprocessors = ['nbconvert.preprocessors.ExtractOutputPreprocessor']
+# c.PDFExporter.preprocessors = ['nbconvert.preprocessors.ExtractOutputPreprocessor']
 
 
 exporter = PDFExporter(config=c)
 
-# exporter.register_preprocessor(TagRemovePreprocessor(config=c),True)
+# filename = "test_export.ipynb"
+filename = "bmw_analysis.ipynb"
 
-output, resources = exporter.from_filename("bmw_analysis.ipynb")
+output, resources = exporter.from_filename(filename)
 
 print("Exported figures")
 print(sorted(resources['outputs']))
 
 # print("resources", resources)
-outfile = "bmw_analysis.pdf"
+outfile = Path(filename).with_suffix(".pdf")
 if isinstance(output, bytes):
     output_type = "wb"
 else:
