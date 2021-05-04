@@ -196,6 +196,10 @@ file:figures/price_of_fueltype.svg
 #+ATTR_HTML: :class r-stretch
 file:figures/mileage_fit.png
 
+** Assumption
+
+All car values falls at the same rate, independent on car model and
+other factors
 
 ** Feature selection
 
@@ -248,7 +252,54 @@ Not so important features here
 
 ** Parameter interpretation
 
-Assumption: All cars value falls at the same rate, independent on
-model and other factors
+| observable    |   10^coef | 10^coef - 1   |
+|---------------+-----------+---------------|
+| year          |     1.106 | 11%           |
+| engineSize    |     1.206 | 21%           |
+| 10000*mileage |     0.941 | -6%           |
+
+# | observable    |   10^coef |
+# |---------------+-----------|
+# | year          |   1.10615 |
+# | engineSize    |   1.20615 |
+# | 10000*mileage |   0.94128 |
+
+
+
+** Parameter interpretation 
+
+Price relative to "Automatic"
+
+| transmission   |   10^coef | 10^coef - 1   |
+|----------------+-----------+---------------|
+| Manual         |     0.913 | -9%           |
+| Semi-Auto      |     1.02  | 2%            |
+
+** Parameter interpretation
+
+Price relative to "1 Series"
+
+| model    |   10^coef | 10^coef - 1   |
+|----------+-----------+---------------|
+| 2 Series |     1.027 | 3%            |
+| 3 Series |     1.13  | 13%           |
+| 4 Series |     1.151 | 15%           |
+| 5 Series |     1.228 | 23%           |
+| 6 Series |     1.302 | 30%           |
+| 7 Series |     1.542 | 54%           |
+| 8 Series |     2.07  | 107%          |
+| M2       |     1.488 | 49%           |
+| M3       |     2.183 | 118%          |
+| M4       |     1.672 | 67%           |
+| M5       |     1.754 | 75%           |
+| X1       |     1.162 | 16%           |
+| X2       |     1.204 | 20%           |
+| X3       |     1.435 | 44%           |
+| X4       |     1.492 | 49%           |
+| X5       |     1.762 | 76%           |
+| X6       |     1.791 | 79%           |
+| X7       |     2.382 | 138%          |
+| Z4       |     1.259 | 26%           |
+
 
 * Conclusion
