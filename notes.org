@@ -9,6 +9,12 @@ Looked into adjusted R^2, but since the number of samples is way
 larger than the number of variables, it is essentially the same as
 normal R^2
 
+* Electric car sales
+
+Currently small, but it's a growing market
+
+https://www.ev-volumes.com/country/total-world-plug-in-vehicle-volumes/
+
 * Selective export/export figures
 
 Removing cells

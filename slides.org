@@ -59,8 +59,14 @@
 #+ATTR_REVEAL: :frag (appear)
 - Cars are used throughout the world
 - Big resale market (due to cost and durability)
-- Typical consumers have no clear idea about car prices
+- Many consumers have no clear idea about car prices
 - Makes navigating the market and negotiating with car dealers difficult
+
+#+begin_notes
+For most people, car is big investment
+
+Lasts many years
+#+end_notes
 
 ** Goal
 
@@ -95,6 +101,8 @@
 | transmission | Type of transmission | categorical |
 | fuelType     | Fuel type            | categorical |
 
+** Which features are the most important?
+
 ** Data model 1
 
 #+ATTR_HTML: :style width: 70vw; max-height: 50vh
@@ -112,29 +120,135 @@ file:figures/data_model3.svg
 
 * Metrics
 
+** R-squared (R^2)
+
+#+ATTR_REVEAL: :frag (appear)
+- A number
+- Measure of fit quality
+- The closer to one the better
+
 * EDA
 
 ** Exploration
 
 ** Price of year and mileage
 
-#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+#+ATTR_HTML: :class r-stretch
 file:figures/price_of_year_mileage.png
+
+#+begin_notes
+Price depends strongly on year and mileage
+#+end_notes
+
+
+** Price of car model
+
+
+#+ATTR_HTML: :class r-stretch
+file:figures/price_of_model.svg
+
+#+begin_notes
+Many models
+
+Price depends somewhat on model
+#+end_notes
+
+** Price of transmission
+
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+#+ATTR_HTML: :class r-stretch
+file:figures/price_of_transmission.svg
+
 
 
 ** Price of tax, mpg and engine size
 
-#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+
+#+ATTR_HTML: :style max-width: 70vw;
+#+ATTR_HTML: :class r-stretch;
 file:figures/price_of_tax_mpg_enginesize.png
+
+#+begin_notes
+Price dependence not so clear
+
+Note outliers in mpg and zero values in tax, engine size
+#+end_notes
+
 
 ** Price of fuel type
 
-#+ATTR_HTML: :style width: 70vw; max-height: 50vh
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+
+
+#+ATTR_HTML: :class r-stretch
 file:figures/price_of_fueltype.svg
 
 
 ** Cleaning
 
 * Model
+
+** Linear model
+
+#+ATTR_HTML: :style max-height: 70vh
+#+ATTR_HTML: :class r-stretch
+file:figures/mileage_fit.png
+
+
+** Feature selection
+
+| Last added feature | Mean R^2 test score |
+|--------------------+---------------------|
+| mileage            |            0.543242 |
+| year               |            0.643062 |
+| model              |            0.885855 |
+| engineSize         |            0.918769 |
+| transmission       |            0.924562 |
+| ...                |                 ... |
+
+#+begin_notes
+Which features are the most important?
+
+Add features one-by-one
+
+Most important features here
+#+end_notes
+
+
+#+reveal: split
+
+|--------------------+---------------------|
+| Last added feature | Mean R^2 test score |
+|--------------------+---------------------|
+| ...                |                 ... |
+| transmission       |            0.924562 |
+| fuelType           |            0.925534 |
+| mpg                |            0.928286 |
+| tax                |            0.928287 |
+|--------------------+---------------------|
+
+
+#+begin_notes
+Not so important features here
+#+end_notes
+
+
+** Feature selection
+
+
+#+ATTR_REVEAL: :frag (appear)
+- Include: mileage, year, car model, engine size and transmission.
+
+- Exclude: fuel type, mpg and tax.
+
+
+
+
+** Parameter interpretation
+
+Assumption: All cars value falls at the same rate, independent on
+model and other factors
 
 * Conclusion
