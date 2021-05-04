@@ -28,6 +28,8 @@
 # #+REVEAL_TITLE_SLIDE: <p style="text-align: right; font-weight: bold; font-size: 1.1em"> %a </p>
 # #+REVEAL_TITLE_SLIDE: <p style="text-align: left;" class="date"> %d <p>
 
+#+HTML_HEAD_EXTRA: <script src="bmw_fetcher.js"></script>
+
 
 # #+startup: beamer
 # #+LaTeX_CLASS: beamer
@@ -279,27 +281,53 @@ Price relative to "Automatic"
 
 Price relative to "1 Series"
 
-| model    |   10^coef | 10^coef - 1   |
-|----------+-----------+---------------|
-| 2 Series |     1.027 | 3%            |
-| 3 Series |     1.13  | 13%           |
-| 4 Series |     1.151 | 15%           |
-| 5 Series |     1.228 | 23%           |
-| 6 Series |     1.302 | 30%           |
-| 7 Series |     1.542 | 54%           |
-| 8 Series |     2.07  | 107%          |
-| M2       |     1.488 | 49%           |
-| M3       |     2.183 | 118%          |
-| M4       |     1.672 | 67%           |
-| M5       |     1.754 | 75%           |
-| X1       |     1.162 | 16%           |
-| X2       |     1.204 | 20%           |
-| X3       |     1.435 | 44%           |
-| X4       |     1.492 | 49%           |
-| X5       |     1.762 | 76%           |
-| X6       |     1.791 | 79%           |
-| X7       |     2.382 | 138%          |
-| Z4       |     1.259 | 26%           |
+| model    | 10^coef | 10^coef - 1 |
+|----------+---------+-------------|
+| 2 Series |   1.027 |          3% |
+| 3 Series |    1.13 |         13% |
+| 4 Series |   1.151 |         15% |
+| 5 Series |   1.228 |         23% |
+| 6 Series |   1.302 |         30% |
+| 7 Series |   1.542 |         54% |
+| ...      |     ... |         ... |
+
+#+reveal: split
+
+| ...      |   ... |  ... |
+| 8 Series |  2.07 | 107% |
+| X1       | 1.162 |  16% |
+| X2       | 1.204 |  20% |
+| X3       | 1.435 |  44% |
+| X4       | 1.492 |  49% |
+| X5       | 1.762 |  76% |
+| X6       | 1.791 |  79% |
+| ...      |   ... |  ... |
+
+#+reveal: split
+
+| ... |   ... |  ... |
+| X7  | 2.382 | 138% |
+| M2  | 1.488 |  49% |
+| M3  | 2.183 | 118% |
+| M4  | 1.672 |  67% |
+| M5  | 1.754 |  75% |
+| Z4  | 1.259 |  26% |
+
+** Web interface
+
+#+reveal_html: <div style="text-align:left">
+#+reveal_html: <form>
+#+reveal_html: </form>
+#+reveal_html: </div>
+
+** Web interface
+
+#+reveal_html: <p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
+# #+ATTR_HTML: target="_blank" 
+# https://svensmark.jp/dc_cert/predict_price/
+
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/web_page_screenshot.png
 
 
 * Conclusion
