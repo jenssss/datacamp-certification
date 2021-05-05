@@ -54,7 +54,7 @@
 - Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)
 
 
-* Motivation
+* Problem statement
 
 ** Background
 
@@ -75,6 +75,16 @@ Lasts many years
 #+ATTR_REVEAL: :frag (appear)
 - Predict resale prices of cars based on historic data
 - Make predictions available to consumers
+
+* Metric
+
+** R-squared (R^2)
+
+#+ATTR_REVEAL: :frag (appear)
+- A number
+- Measure of how well the model describes the data
+- The closer to one the better
+
 
 * Data
 
@@ -120,20 +130,9 @@ file:figures/data_model2.svg
 file:figures/data_model3.svg
 
 
-* Metrics
+* Exploring the data
 
-** R-squared (R^2)
-
-#+ATTR_REVEAL: :frag (appear)
-- A number
-- Measure of fit quality
-- The closer to one the better
-
-* EDA
-
-** Exploration
-
-** Price of year and mileage
+** Year and mileage
 
 # #+ATTR_HTML: :style width: 70vw; max-height: 50vh
 #+ATTR_HTML: :class r-stretch
@@ -141,10 +140,12 @@ file:figures/price_of_year_mileage.png
 
 #+begin_notes
 Price depends strongly on year and mileage
+
+Linear looking
 #+end_notes
 
 
-** Price of car model
+** Car model
 
 
 #+ATTR_HTML: :class r-stretch
@@ -154,17 +155,25 @@ file:figures/price_of_model.svg
 Many models
 
 Price depends somewhat on model
+
+Will drop categories with fewer than 20 (M6, Z3, i8)
+
 #+end_notes
 
-** Price of transmission
+** Transmission
 
 # #+ATTR_HTML: :style width: 70vw; max-height: 50vh
 #+ATTR_HTML: :class r-stretch
 file:figures/price_of_transmission.svg
 
 
+#+begin_notes
+Roughly evenly distributed
 
-** Price of tax, mpg and engine size
+Slight differences in mean, should be distinguishable be linear model
+#+end_notes
+
+** Tax, mpg and engine size
 
 # #+ATTR_HTML: :style width: 70vw; max-height: 50vh
 
@@ -175,20 +184,29 @@ file:figures/price_of_tax_mpg_enginesize.png
 #+begin_notes
 Price dependence not so clear
 
-Note outliers in mpg and zero values in tax, engine size
+Will drop outliers in mpg and zero values in tax, engine size
+
+Should follow up with data collection team
 #+end_notes
 
 
-** Price of fuel type
+** Fuel type
 
 # #+ATTR_HTML: :style width: 70vw; max-height: 50vh
-
 
 #+ATTR_HTML: :class r-stretch
 file:figures/price_of_fueltype.svg
 
+#+begin_notes
+Price dependence weak, unlikely to impact model
 
-** Cleaning
+Will drop categories with fewer than 20
+
+Includes electric, but with more data could be included
+
+#+end_notes
+
+
 
 * Model
 
@@ -198,10 +216,22 @@ file:figures/price_of_fueltype.svg
 #+ATTR_HTML: :class r-stretch
 file:figures/mileage_fit.png
 
-** Assumption
+#+begin_notes
+Assume price depends linearly on mileage and year
 
-All car values falls at the same rate, independent on car model and
-other factors
+Normal distribution around this line
+#+end_notes
+
+** Additional assumption
+
+- All car prices fall at the same rate with age and mileage,
+  independent on car model and other factors
+
+#+begin_notes
+Since the same model is applied across these variables
+
+#+end_notes
+
 
 ** Feature selection
 
@@ -313,14 +343,45 @@ Price relative to "1 Series"
 | M5  | 1.754 |  75% |
 | Z4  | 1.259 |  26% |
 
-** Web interface
+
+** 90% Prediction interval
+
+#+ATTR_REVEAL: :frag (appear)
+- 90% of car prices expected to be within this interval
+
+- Indicates model uncertainty
+
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+Example:
+
+#+ATTR_REVEAL: :frag (appear)
+- Predicted price (p): $10,000
+
+- Relative half-width (h): 25%
+
+- 90% of cars between p/(1+h) and p*(1+h), that is from $8,000 to $12,500
+
+
+** 90% Prediction interval with partial data
+
+
+| Last added feature | Relative half-width |
+|--------------------+---------------------|
+| mileage            |                 70% |
+| model              |                 41% |
+| year               |                 30% |
+| engineSize         |                 25% |
+| transmission       |                 24% |
+   
+** Web interface prototype
 
 #+reveal_html: <div style="text-align:left">
 #+reveal_html: <form>
 #+reveal_html: </form>
 #+reveal_html: </div>
 
-** Web interface
+** Web interface prototype
 
 #+reveal_html: <p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
 # #+ATTR_HTML: target="_blank" 
@@ -331,3 +392,34 @@ file:figures/web_page_screenshot.png
 
 
 * Conclusion
+
+#+ATTR_REVEAL: :frag (appear)
+- Built a linear model for predicting resale prices of BMW cars
+- Works fairly well
+- Model coeffficients are explainable
+- Demonstrated web interface prototype
+
+** Going forward
+
+
+# # #+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+Follow up with data collection team
+#+ATTR_REVEAL: :frag (appear)
+-  Suspicous values in mpg, engine size and road tax
+
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+If more accuracy is required
+
+#+ATTR_REVEAL: :frag (appear)
+- More complicated model might help
+- But risk of overfitting and less explainability
+
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+Web interface
+
+#+ATTR_REVEAL: :frag (appear)
+- Improve design of web front end
+- Ensure scalability of back end depending on excpected usage
