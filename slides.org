@@ -41,15 +41,9 @@
 
 * My background
 
-** Education
-
 #+ATTR_REVEAL: :frag (appear)
-- PhD from Aarhus University, Denmark (2016)
-- Theoretical physics
-
-** Work
-
-#+ATTR_REVEAL: :frag (appear)
+- Physicist
+- PhD in physics from Aarhus University, Denmark (2016)
 - Postdoc at Kansas State University (2017)
 - Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)
 
@@ -74,17 +68,16 @@ Lasts many years
 
 #+ATTR_REVEAL: :frag (appear)
 - Predict resale prices of cars based on historic data
+  #+ATTR_REVEAL: :frag (appear)
+  + Target variable is continuous
+  + Will use R-squared (R^2) metric
+  + This should be close to 1
 - Make predictions available to consumers
 
-* Metric
-
-** R-squared (R^2)
-
-#+ATTR_REVEAL: :frag (appear)
-- A number
-- Measure of how well the model describes the data
-- The closer to one the better
-
+#+begin_notes
+Since target variable is continuous I will use so-called R^2 metric to
+assess the model
+#+end_notes
 
 * Data
 
@@ -115,17 +108,13 @@ Lasts many years
 
 ** Which features are the most important?
 
-** Data model 1
+** Simple data model
 
 #+ATTR_HTML: :style width: 70vw; max-height: 50vh
 file:figures/data_model1.svg
 
 
-** Data model 2
-
-file:figures/data_model2.svg
-
-** Data model 3
+** Full data model
 
 file:figures/data_model3.svg
 
@@ -184,7 +173,7 @@ file:figures/price_of_tax_mpg_enginesize.png
 #+begin_notes
 Price dependence not so clear
 
-Will drop outliers in mpg and zero values in tax, engine size
+Will drop outliers in mpg and zero values in tax, engine size (no 0 vals in mpg though)
 
 Should follow up with data collection team
 #+end_notes
@@ -208,7 +197,7 @@ Includes electric, but with more data could be included
 
 
 
-* Model
+* Predictive model
 
 ** Linear model
 
@@ -219,17 +208,9 @@ file:figures/mileage_fit.png
 #+begin_notes
 Assume price depends linearly on mileage and year
 
+Mention uncertainty
+
 Normal distribution around this line
-#+end_notes
-
-** Additional assumption
-
-- All car prices fall at the same rate with age and mileage,
-  independent on car model and other factors
-
-#+begin_notes
-Since the same model is applied across these variables
-
 #+end_notes
 
 
@@ -318,6 +299,115 @@ Price relative to "1 Series"
 | 4 Series |   1.151 |         15% |
 | 5 Series |   1.228 |         23% |
 | 6 Series |   1.302 |         30% |
+| ...      |     ... |         ... |
+
+
+** Web interface prototype
+
+#+reveal_html: <div style="text-align:left">
+#+reveal_html: <form>
+#+reveal_html: </form>
+#+reveal_html: </div>
+
+#+begin_notes
+Live demo is dangerous
+
+Mention prediction interval - shows uncertainty
+#+end_notes
+
+
+** Web interface prototype
+
+#+reveal_html: <p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
+# #+ATTR_HTML: target="_blank" 
+# https://svensmark.jp/dc_cert/predict_price/
+
+# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
+file:figures/web_page_screenshot.png
+
+
+* Conclusion
+
+#+ATTR_REVEAL: :frag (appear)
+- Built a linear model for predicting resale prices of BMW cars
+- Works fairly well
+- Model coeffficients are explainable
+- Demonstrated web interface prototype
+
+** Going forward
+
+
+# # #+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+Follow up with data collection team
+#+ATTR_REVEAL: :frag (appear)
+-  Suspicous values in mpg, engine size and road tax
+
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+If more accuracy is required
+
+#+ATTR_REVEAL: :frag (appear)
+- More complex model might help
+- But risk of overfitting and less explainability
+
+#+ATTR_REVEAL: :frag (appear)
+#+ATTR_HTML: :style text-align:left
+Web interface
+
+#+ATTR_REVEAL: :frag (appear)
+- Improve design of web front end
+- Ensure scalability of back end depending on excpected usage
+
+** Thank you for your attention
+
+Any quetions?
+
+* Additional background
+
+
+* Metric
+
+** R-squared (R^2)
+
+#+ATTR_REVEAL: :frag (appear)
+- A number
+- Measure of how well the model describes the data
+- The closer to one the better
+
+
+* Data
+
+** Data model 2
+
+file:figures/data_model2.svg
+
+
+* Predictive model
+
+** Additional assumption
+
+- All car prices fall at the same rate with age and mileage,
+  independent on car model and other factors
+
+#+begin_notes
+Since the same model is applied across these variables
+
+#+end_notes
+
+
+
+** Parameter interpretation
+
+Price relative to "1 Series"
+
+| model    | 10^coef | 10^coef - 1 |
+|----------+---------+-------------|
+| 2 Series |   1.027 |          3% |
+| 3 Series |    1.13 |         13% |
+| 4 Series |   1.151 |         15% |
+| 5 Series |   1.228 |         23% |
+| 6 Series |   1.302 |         30% |
 | 7 Series |   1.542 |         54% |
 | ...      |     ... |         ... |
 
@@ -374,52 +464,4 @@ Example:
 | engineSize         |                 25% |
 | transmission       |                 24% |
    
-** Web interface prototype
 
-#+reveal_html: <div style="text-align:left">
-#+reveal_html: <form>
-#+reveal_html: </form>
-#+reveal_html: </div>
-
-** Web interface prototype
-
-#+reveal_html: <p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
-# #+ATTR_HTML: target="_blank" 
-# https://svensmark.jp/dc_cert/predict_price/
-
-# #+ATTR_HTML: :style width: 70vw; max-height: 50vh
-file:figures/web_page_screenshot.png
-
-
-* Conclusion
-
-#+ATTR_REVEAL: :frag (appear)
-- Built a linear model for predicting resale prices of BMW cars
-- Works fairly well
-- Model coeffficients are explainable
-- Demonstrated web interface prototype
-
-** Going forward
-
-
-# # #+ATTR_REVEAL: :frag (appear)
-#+ATTR_HTML: :style text-align:left
-Follow up with data collection team
-#+ATTR_REVEAL: :frag (appear)
--  Suspicous values in mpg, engine size and road tax
-
-#+ATTR_REVEAL: :frag (appear)
-#+ATTR_HTML: :style text-align:left
-If more accuracy is required
-
-#+ATTR_REVEAL: :frag (appear)
-- More complicated model might help
-- But risk of overfitting and less explainability
-
-#+ATTR_REVEAL: :frag (appear)
-#+ATTR_HTML: :style text-align:left
-Web interface
-
-#+ATTR_REVEAL: :frag (appear)
-- Improve design of web front end
-- Ensure scalability of back end depending on excpected usage
