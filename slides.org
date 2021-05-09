@@ -1,6 +1,6 @@
 #+TITLE: Predicting prices of used BMW cars
 # #+SUBTITLE: Datacamp certification presentation
-#+DATE: May 3, 2021
+#+DATE: May 10, 2021
 
 # #+REVEAL_MATHJAX_URL: file:///home/jens/.web_static/MathJax-latest/es5/tex-chtml.js
 # # ?config=TeX-AMS-MML_HTMLorMML
@@ -84,7 +84,7 @@ assess the model
 ** Source
 
 #+ATTR_REVEAL: :frag (appear)
-- Provided by datacamp
+- Provided by Datacamp
 - No details about collection known
 
 ** Features
@@ -331,7 +331,7 @@ file:figures/web_page_screenshot.png
 #+ATTR_REVEAL: :frag (appear)
 - Built a linear model for predicting resale prices of BMW cars
 - Works fairly well
-- Model coeffficients are explainable
+- Model coefficients are explainable
 - Demonstrated web interface prototype
 
 ** Going forward
@@ -341,7 +341,7 @@ file:figures/web_page_screenshot.png
 #+ATTR_HTML: :style text-align:left
 Follow up with data collection team
 #+ATTR_REVEAL: :frag (appear)
--  Suspicous values in mpg, engine size and road tax
+- Suspicious values in mpg, engine size and tax
 
 #+ATTR_REVEAL: :frag (appear)
 #+ATTR_HTML: :style text-align:left
@@ -357,11 +357,11 @@ Web interface
 
 #+ATTR_REVEAL: :frag (appear)
 - Improve design of web front end
-- Ensure scalability of back end depending on excpected usage
+- Ensure scalability of back end depending on expected usage
 
 ** Thank you for your attention
 
-Any quetions?
+Any questions?
 
 * Additional background
 

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Predicting prices of used BMW cars</title>
+<meta name="author" content="(Jens Svensmark)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/theme/white.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script src="bmw_fetcher.js"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title"> Predicting prices of used BMW cars </h1>
+<h2 class=\"author\"> Jens Svensmark </h2>
+<p class=\"date\"> May 10, 2021 <p>
+</section>
+
+<section>
+<section id="slide-org73a7ace">
+<h2 id="org73a7ace">My background</h2>
+<ul>
+<li class="fragment appear">Physicist</li>
+<li class="fragment appear">PhD in physics from Aarhus University, Denmark (2016)</li>
+<li class="fragment appear">Postdoc at Kansas State University (2017)</li>
+<li class="fragment appear">Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga8b7b70">
+<h2 id="orga8b7b70">Problem statement</h2>
+<div class="outline-text-2" id="text-orga8b7b70">
+</div>
+</section>
+<section id="slide-orgd0a1da7">
+<h3 id="orgd0a1da7">Background</h3>
+<ul>
+<li class="fragment appear">Cars are used throughout the world</li>
+<li class="fragment appear">Big resale market (due to cost and durability)</li>
+<li class="fragment appear">Many consumers have no clear idea about car prices</li>
+<li class="fragment appear">Makes navigating the market and negotiating with car dealers difficult</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+For most people, car is big investment
+</p>
+
+<p>
+Lasts many years
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgd0f8699">
+<h3 id="orgd0f8699">Goal</h3>
+<ul>
+<li class="fragment appear">Predict resale prices of cars based on historic data
+<ul>
+<li class="fragment appear">Target variable is continuous</li>
+<li class="fragment appear">Will use R-squared (R<sup>2</sup>) metric</li>
+<li class="fragment appear">This should be close to 1</li>
+
+</ul></li>
+<li class="fragment appear">Make predictions available to consumers</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Since target variable is continuous I will use so-called R<sup>2</sup> metric to
+assess the model
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orge3bb6db">
+<h2 id="orge3bb6db">Data</h2>
+<div class="outline-text-2" id="text-orge3bb6db">
+</div>
+</section>
+<section id="slide-org03bffc7">
+<h3 id="org03bffc7">Source</h3>
+<ul>
+<li class="fragment appear">Provided by datacamp</li>
+<li class="fragment appear">No details about collection known</li>
+
+</ul>
+
+</section>
+<section id="slide-orgadf8af5">
+<h3 id="orgadf8af5">Features</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">price</td>
+<td class="org-left">Price in USD</td>
+<td class="org-left">numerical</td>
+</tr>
+
+<tr>
+<td class="org-left">year</td>
+<td class="org-left">Production year</td>
+<td class="org-left">numerical</td>
+</tr>
+
+<tr>
+<td class="org-left">mileage</td>
+<td class="org-left">Distance driven</td>
+<td class="org-left">numerical</td>
+</tr>
+
+<tr>
+<td class="org-left">tax</td>
+<td class="org-left">Road tax</td>
+<td class="org-left">numerical</td>
+</tr>
+
+<tr>
+<td class="org-left">mpg</td>
+<td class="org-left">Miles per gallon</td>
+<td class="org-left">numerical</td>
+</tr>
+
+<tr>
+<td class="org-left">engineSize</td>
+<td class="org-left">Size of engine</td>
+<td class="org-left">numerical</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgadf8af5-split">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">model</td>
+<td class="org-left">Car model</td>
+<td class="org-left">categorical</td>
+</tr>
+
+<tr>
+<td class="org-left">transmission</td>
+<td class="org-left">Type of transmission</td>
+<td class="org-left">categorical</td>
+</tr>
+
+<tr>
+<td class="org-left">fuelType</td>
+<td class="org-left">Fuel type</td>
+<td class="org-left">categorical</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgccb1395">
+<h3 id="orgccb1395">Which features are the most important?</h3>
+
+</section>
+<section id="slide-org0463fa1">
+<h3 id="org0463fa1">Simple data model</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/data_model1.svg" class="org-svg" style="width: 70vw; max-height: 50vh">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+</section>
+<section id="slide-org86f078e">
+<h3 id="org86f078e">Full data model</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/data_model3.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf1ea3d6">
+<h2 id="orgf1ea3d6">Exploring the data</h2>
+<div class="outline-text-2" id="text-orgf1ea3d6">
+</div>
+</section>
+<section id="slide-org7e60a9c">
+<h3 id="org7e60a9c">Year and mileage</h3>
+
+<div class="figure">
+<p><img src="figures/price_of_year_mileage.png" alt="price_of_year_mileage.png" class="r-stretch" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Price depends strongly on year and mileage
+</p>
+
+<p>
+Linear looking
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-org8bfa62a">
+<h3 id="org8bfa62a">Car model</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/price_of_model.svg" class="r-stretch">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Many models
+</p>
+
+<p>
+Price depends somewhat on model
+</p>
+
+<p>
+Will drop categories with fewer than 20 (M6, Z3, i8)
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgf0a8f07">
+<h3 id="orgf0a8f07">Transmission</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/price_of_transmission.svg" class="r-stretch">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+<aside class="notes">
+<p>
+Roughly evenly distributed
+</p>
+
+<p>
+Slight differences in mean, should be distinguishable be linear model
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgfb50411">
+<h3 id="orgfb50411">Tax, mpg and engine size</h3>
+
+<div class="figure">
+<p><img src="figures/price_of_tax_mpg_enginesize.png" alt="price_of_tax_mpg_enginesize.png" class="r-stretch;" style="max-width: 70vw;" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Price dependence not so clear
+</p>
+
+<p>
+Will drop outliers in mpg and zero values in tax, engine size (no 0 vals in mpg though)
+</p>
+
+<p>
+Should follow up with data collection team
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-org707e03e">
+<h3 id="org707e03e">Fuel type</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/price_of_fueltype.svg" class="r-stretch">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Price dependence weak, unlikely to impact model
+</p>
+
+<p>
+Will drop categories with fewer than 20
+</p>
+
+<p>
+Includes electric, but with more data could be included
+</p>
+
+</aside>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb4ae7ca">
+<h2 id="orgb4ae7ca">Predictive model</h2>
+<div class="outline-text-2" id="text-orgb4ae7ca">
+</div>
+</section>
+<section id="slide-org7cd4522">
+<h3 id="org7cd4522">Linear model</h3>
+
+<div class="figure">
+<p><img src="figures/mileage_fit.png" alt="mileage_fit.png" class="r-stretch" style="max-height: 70vh" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Assume price depends linearly on mileage and year
+</p>
+
+<p>
+Mention uncertainty
+</p>
+
+<p>
+Normal distribution around this line
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-orgef80a77">
+<h3 id="orgef80a77">Feature selection</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Last added feature</th>
+<th scope="col" class="org-right">Mean R<sup>2</sup> test score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mileage</td>
+<td class="org-right">0.543242</td>
+</tr>
+
+<tr>
+<td class="org-left">year</td>
+<td class="org-right">0.643062</td>
+</tr>
+
+<tr>
+<td class="org-left">model</td>
+<td class="org-right">0.885855</td>
+</tr>
+
+<tr>
+<td class="org-left">engineSize</td>
+<td class="org-right">0.918769</td>
+</tr>
+
+<tr>
+<td class="org-left">transmission</td>
+<td class="org-right">0.924562</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+</tbody>
+</table>
+
+<aside class="notes">
+<p>
+Which features are the most important?
+</p>
+
+<p>
+Add features one-by-one
+</p>
+
+<p>
+Most important features here
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-orgef80a77-split">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Last added feature</th>
+<th scope="col" class="org-right">Mean R<sup>2</sup> test score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">transmission</td>
+<td class="org-right">0.924562</td>
+</tr>
+
+<tr>
+<td class="org-left">fuelType</td>
+<td class="org-right">0.925534</td>
+</tr>
+
+<tr>
+<td class="org-left">mpg</td>
+<td class="org-right">0.928286</td>
+</tr>
+
+<tr>
+<td class="org-left">tax</td>
+<td class="org-right">0.928287</td>
+</tr>
+</tbody>
+</table>
+
+
+<aside class="notes">
+<p>
+Not so important features here
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-org58cfbc7">
+<h3 id="org58cfbc7">Feature selection</h3>
+<ul>
+<li class="fragment appear">Include: mileage, year, car model, engine size and transmission.</li>
+
+<li class="fragment appear">Exclude: fuel type, mpg and tax.</li>
+
+</ul>
+
+
+
+
+</section>
+<section id="slide-orgd3c569a">
+<h3 id="orgd3c569a">Parameter interpretation</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">observable</th>
+<th scope="col" class="org-right">10<sup>coef</sup></th>
+<th scope="col" class="org-right">10<sup>coef</sup> - 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">year</td>
+<td class="org-right">1.106</td>
+<td class="org-right">11%</td>
+</tr>
+
+<tr>
+<td class="org-left">engineSize</td>
+<td class="org-right">1.206</td>
+<td class="org-right">21%</td>
+</tr>
+
+<tr>
+<td class="org-left">10000*mileage</td>
+<td class="org-right">0.941</td>
+<td class="org-right">-6%</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+<section id="slide-orgc82073d">
+<h3 id="orgc82073d">Parameter interpretation</h3>
+<p>
+Price relative to "Automatic"
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">transmission</th>
+<th scope="col" class="org-right">10<sup>coef</sup></th>
+<th scope="col" class="org-right">10<sup>coef</sup> - 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Manual</td>
+<td class="org-right">0.913</td>
+<td class="org-right">-9%</td>
+</tr>
+
+<tr>
+<td class="org-left">Semi-Auto</td>
+<td class="org-right">1.02</td>
+<td class="org-right">2%</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgdb17a77">
+<h3 id="orgdb17a77">Parameter interpretation</h3>
+<p>
+Price relative to "1 Series"
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">model</th>
+<th scope="col" class="org-right">10<sup>coef</sup></th>
+<th scope="col" class="org-right">10<sup>coef</sup> - 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">2 Series</td>
+<td class="org-right">1.027</td>
+<td class="org-right">3%</td>
+</tr>
+
+<tr>
+<td class="org-left">3 Series</td>
+<td class="org-right">1.13</td>
+<td class="org-right">13%</td>
+</tr>
+
+<tr>
+<td class="org-left">4 Series</td>
+<td class="org-right">1.151</td>
+<td class="org-right">15%</td>
+</tr>
+
+<tr>
+<td class="org-left">5 Series</td>
+<td class="org-right">1.228</td>
+<td class="org-right">23%</td>
+</tr>
+
+<tr>
+<td class="org-left">6 Series</td>
+<td class="org-right">1.302</td>
+<td class="org-right">30%</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-org23aaf25">
+<h3 id="org23aaf25">Web interface prototype</h3>
+<div style="text-align:left">
+<form>
+</form>
+</div>
+
+<aside class="notes">
+<p>
+Live demo is dangerous
+</p>
+
+<p>
+Mention prediction interval - shows uncertainty
+</p>
+
+</aside>
+
+
+</section>
+<section id="slide-org7bbfaf3">
+<h3 id="org7bbfaf3">Web interface prototype</h3>
+<p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
+
+
+<div class="figure">
+<p><img src="figures/web_page_screenshot.png" alt="web_page_screenshot.png" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org7fb453f">
+<h2 id="org7fb453f">Conclusion</h2>
+<ul>
+<li class="fragment appear">Built a linear model for predicting resale prices of BMW cars</li>
+<li class="fragment appear">Works fairly well</li>
+<li class="fragment appear">Model coeffficients are explainable</li>
+<li class="fragment appear">Demonstrated web interface prototype</li>
+
+</ul>
+
+</section>
+<section id="slide-org28f014f">
+<h3 id="org28f014f">Going forward</h3>
+<p style="text-align:left">
+Follow up with data collection team
+</p>
+<ul>
+<li class="fragment appear">Suspicious values in mpg, engine size and tax</li>
+
+</ul>
+
+<p class="fragment (appear)" style="text-align:left">
+If more accuracy is required
+</p>
+
+<ul>
+<li class="fragment appear">More complex model might help</li>
+<li class="fragment appear">But risk of overfitting and less explainability</li>
+
+</ul>
+
+<p class="fragment (appear)" style="text-align:left">
+Web interface
+</p>
+
+<ul>
+<li class="fragment appear">Improve design of web front end</li>
+<li class="fragment appear">Ensure scalability of back end depending on excpected usage</li>
+
+</ul>
+
+</section>
+<section id="slide-org89f2324">
+<h3 id="org89f2324">Thank you for your attention</h3>
+<p>
+Any quetions?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org081153a">
+<h2 id="org081153a">Additional background</h2>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org175445a">
+<h2 id="org175445a">Metric</h2>
+<div class="outline-text-2" id="text-org175445a">
+</div>
+</section>
+<section id="slide-orga09d5b7">
+<h3 id="orga09d5b7">R-squared (R<sup>2</sup>)</h3>
+<ul>
+<li class="fragment appear">A number</li>
+<li class="fragment appear">Measure of how well the model describes the data</li>
+<li class="fragment appear">The closer to one the better</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd3e9bd0">
+<h2 id="orgd3e9bd0">Data</h2>
+<div class="outline-text-2" id="text-orgd3e9bd0">
+</div>
+</section>
+<section id="slide-org37e850f">
+<h3 id="org37e850f">Data model 2</h3>
+
+<div class="figure">
+<p><object type="image/svg+xml" data="figures/data_model2.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org029821a">
+<h2 id="org029821a">Predictive model</h2>
+<div class="outline-text-2" id="text-org029821a">
+</div>
+</section>
+<section id="slide-org3b35087">
+<h3 id="org3b35087">Additional assumption</h3>
+<ul>
+<li>All car prices fall at the same rate with age and mileage,
+independent on car model and other factors</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Since the same model is applied across these variables
+</p>
+
+</aside>
+
+
+
+</section>
+<section id="slide-org3fcbecd">
+<h3 id="org3fcbecd">Parameter interpretation</h3>
+<p>
+Price relative to "1 Series"
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">model</th>
+<th scope="col" class="org-right">10<sup>coef</sup></th>
+<th scope="col" class="org-right">10<sup>coef</sup> - 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">2 Series</td>
+<td class="org-right">1.027</td>
+<td class="org-right">3%</td>
+</tr>
+
+<tr>
+<td class="org-left">3 Series</td>
+<td class="org-right">1.13</td>
+<td class="org-right">13%</td>
+</tr>
+
+<tr>
+<td class="org-left">4 Series</td>
+<td class="org-right">1.151</td>
+<td class="org-right">15%</td>
+</tr>
+
+<tr>
+<td class="org-left">5 Series</td>
+<td class="org-right">1.228</td>
+<td class="org-right">23%</td>
+</tr>
+
+<tr>
+<td class="org-left">6 Series</td>
+<td class="org-right">1.302</td>
+<td class="org-right">30%</td>
+</tr>
+
+<tr>
+<td class="org-left">7 Series</td>
+<td class="org-right">1.542</td>
+<td class="org-right">54%</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org3fcbecd-split">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">8 Series</td>
+<td class="org-right">2.07</td>
+<td class="org-right">107%</td>
+</tr>
+
+<tr>
+<td class="org-left">X1</td>
+<td class="org-right">1.162</td>
+<td class="org-right">16%</td>
+</tr>
+
+<tr>
+<td class="org-left">X2</td>
+<td class="org-right">1.204</td>
+<td class="org-right">20%</td>
+</tr>
+
+<tr>
+<td class="org-left">X3</td>
+<td class="org-right">1.435</td>
+<td class="org-right">44%</td>
+</tr>
+
+<tr>
+<td class="org-left">X4</td>
+<td class="org-right">1.492</td>
+<td class="org-right">49%</td>
+</tr>
+
+<tr>
+<td class="org-left">X5</td>
+<td class="org-right">1.762</td>
+<td class="org-right">76%</td>
+</tr>
+
+<tr>
+<td class="org-left">X6</td>
+<td class="org-right">1.791</td>
+<td class="org-right">79%</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org3fcbecd-split">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+<td class="org-right">&#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">X7</td>
+<td class="org-right">2.382</td>
+<td class="org-right">138%</td>
+</tr>
+
+<tr>
+<td class="org-left">M2</td>
+<td class="org-right">1.488</td>
+<td class="org-right">49%</td>
+</tr>
+
+<tr>
+<td class="org-left">M3</td>
+<td class="org-right">2.183</td>
+<td class="org-right">118%</td>
+</tr>
+
+<tr>
+<td class="org-left">M4</td>
+<td class="org-right">1.672</td>
+<td class="org-right">67%</td>
+</tr>
+
+<tr>
+<td class="org-left">M5</td>
+<td class="org-right">1.754</td>
+<td class="org-right">75%</td>
+</tr>
+
+<tr>
+<td class="org-left">Z4</td>
+<td class="org-right">1.259</td>
+<td class="org-right">26%</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-org616ebf6">
+<h3 id="org616ebf6">90% Prediction interval</h3>
+<ul>
+<li class="fragment appear">90% of car prices expected to be within this interval</li>
+
+<li class="fragment appear">Indicates model uncertainty</li>
+
+</ul>
+
+<p class="fragment (appear)" style="text-align:left">
+Example:
+</p>
+
+<ul>
+<li class="fragment appear">Predicted price (p): $10,000</li>
+
+<li class="fragment appear">Relative half-width (h): 25%</li>
+
+<li class="fragment appear">90% of cars between p/(1+h) and p*(1+h), that is from $8,000 to $12,500</li>
+
+</ul>
+
+
+</section>
+<section id="slide-org0d32dc6">
+<h3 id="org0d32dc6">90% Prediction interval with partial data</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Last added feature</th>
+<th scope="col" class="org-right">Relative half-width</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mileage</td>
+<td class="org-right">70%</td>
+</tr>
+
+<tr>
+<td class="org-left">model</td>
+<td class="org-right">41%</td>
+</tr>
+
+<tr>
+<td class="org-left">year</td>
+<td class="org-right">30%</td>
+</tr>
+
+<tr>
+<td class="org-left">engineSize</td>
+<td class="org-right">25%</td>
+</tr>
+
+<tr>
+<td class="org-left">transmission</td>
+<td class="org-right">24%</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/reveal.js"></script>
+<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/markdown/markdown.js"></script>
+<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/zoom/zoom.js"></script>
+<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown,RevealZoom,RevealNotes],
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+});
+
+
+</script>
+</body>
+</html>
