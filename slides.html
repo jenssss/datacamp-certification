@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/theme/white.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -18,7 +18,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -33,27 +33,22 @@
 </section>
 
 <section>
-<section id="slide-org73a7ace">
-<h2 id="org73a7ace">My background</h2>
-<ul>
-<li class="fragment appear">Physicist</li>
-<li class="fragment appear">PhD in physics from Aarhus University, Denmark (2016)</li>
-<li class="fragment appear">Postdoc at Kansas State University (2017)</li>
-<li class="fragment appear">Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)</li>
-
-</ul>
-
+<section id="slide-org7e9eba2">
+<h2 id="org7e9eba2">Source</h2>
+<p>
+Source code for this project available on <a href="https://github.com/jenssss/datacamp-certification">github</a>.
+</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orga8b7b70">
-<h2 id="orga8b7b70">Problem statement</h2>
-<div class="outline-text-2" id="text-orga8b7b70">
+<section id="slide-org2064619">
+<h2 id="org2064619">Problem statement</h2>
+<div class="outline-text-2" id="text-org2064619">
 </div>
 </section>
-<section id="slide-orgd0a1da7">
-<h3 id="orgd0a1da7">Background</h3>
+<section id="slide-org836eb7a">
+<h3 id="org836eb7a">Background</h3>
 <ul>
 <li class="fragment appear">Cars are used throughout the world</li>
 <li class="fragment appear">Big resale market (due to cost and durability)</li>
@@ -74,8 +69,8 @@ Lasts many years
 </aside>
 
 </section>
-<section id="slide-orgd0f8699">
-<h3 id="orgd0f8699">Goal</h3>
+<section id="slide-org334006e">
+<h3 id="org334006e">Goal</h3>
 <ul>
 <li class="fragment appear">Predict resale prices of cars based on historic data
 <ul>
@@ -99,22 +94,22 @@ assess the model
 </section>
 </section>
 <section>
-<section id="slide-orge3bb6db">
-<h2 id="orge3bb6db">Data</h2>
-<div class="outline-text-2" id="text-orge3bb6db">
+<section id="slide-orgc5bb50d">
+<h2 id="orgc5bb50d">Data</h2>
+<div class="outline-text-2" id="text-orgc5bb50d">
 </div>
 </section>
-<section id="slide-org03bffc7">
-<h3 id="org03bffc7">Source</h3>
+<section id="slide-org156b92e">
+<h3 id="org156b92e">Source</h3>
 <ul>
-<li class="fragment appear">Provided by datacamp</li>
+<li class="fragment appear">Provided by Datacamp</li>
 <li class="fragment appear">No details about collection known</li>
 
 </ul>
 
 </section>
-<section id="slide-orgadf8af5">
-<h3 id="orgadf8af5">Features</h3>
+<section id="slide-org39e7878">
+<h3 id="org39e7878">Features</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -172,7 +167,7 @@ assess the model
 </table>
 
 </section>
-<section id="slide-orgadf8af5-split">
+<section id="slide-org39e7878-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -213,12 +208,12 @@ assess the model
 </table>
 
 </section>
-<section id="slide-orgccb1395">
-<h3 id="orgccb1395">Which features are the most important?</h3>
+<section id="slide-org4b6e929">
+<h3 id="org4b6e929">Which features are the most important?</h3>
 
 </section>
-<section id="slide-org0463fa1">
-<h3 id="org0463fa1">Simple data model</h3>
+<section id="slide-org5b2d356">
+<h3 id="org5b2d356">Simple data model</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/data_model1.svg" class="org-svg" style="width: 70vw; max-height: 50vh">
@@ -228,8 +223,8 @@ Sorry, your browser does not support SVG.</object>
 
 
 </section>
-<section id="slide-org86f078e">
-<h3 id="org86f078e">Full data model</h3>
+<section id="slide-orgd4b8fb1">
+<h3 id="orgd4b8fb1">Full data model</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/data_model3.svg" class="org-svg">
@@ -241,13 +236,13 @@ Sorry, your browser does not support SVG.</object>
 </section>
 </section>
 <section>
-<section id="slide-orgf1ea3d6">
-<h2 id="orgf1ea3d6">Exploring the data</h2>
-<div class="outline-text-2" id="text-orgf1ea3d6">
+<section id="slide-orgf5b9382">
+<h2 id="orgf5b9382">Exploring the data</h2>
+<div class="outline-text-2" id="text-orgf5b9382">
 </div>
 </section>
-<section id="slide-org7e60a9c">
-<h3 id="org7e60a9c">Year and mileage</h3>
+<section id="slide-org9535e62">
+<h3 id="org9535e62">Year and mileage</h3>
 
 <div class="figure">
 <p><img src="figures/price_of_year_mileage.png" alt="price_of_year_mileage.png" class="r-stretch" />
@@ -267,8 +262,8 @@ Linear looking
 
 
 </section>
-<section id="slide-org8bfa62a">
-<h3 id="org8bfa62a">Car model</h3>
+<section id="slide-orge5786d9">
+<h3 id="orge5786d9">Car model</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/price_of_model.svg" class="r-stretch">
@@ -292,8 +287,8 @@ Will drop categories with fewer than 20 (M6, Z3, i8)
 </aside>
 
 </section>
-<section id="slide-orgf0a8f07">
-<h3 id="orgf0a8f07">Transmission</h3>
+<section id="slide-org995d6c3">
+<h3 id="org995d6c3">Transmission</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/price_of_transmission.svg" class="r-stretch">
@@ -314,8 +309,8 @@ Slight differences in mean, should be distinguishable be linear model
 </aside>
 
 </section>
-<section id="slide-orgfb50411">
-<h3 id="orgfb50411">Tax, mpg and engine size</h3>
+<section id="slide-org3d4368a">
+<h3 id="org3d4368a">Tax, mpg and engine size</h3>
 
 <div class="figure">
 <p><img src="figures/price_of_tax_mpg_enginesize.png" alt="price_of_tax_mpg_enginesize.png" class="r-stretch;" style="max-width: 70vw;" />
@@ -339,8 +334,8 @@ Should follow up with data collection team
 
 
 </section>
-<section id="slide-org707e03e">
-<h3 id="org707e03e">Fuel type</h3>
+<section id="slide-org8e28e97">
+<h3 id="org8e28e97">Fuel type</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/price_of_fueltype.svg" class="r-stretch">
@@ -368,13 +363,13 @@ Includes electric, but with more data could be included
 </section>
 </section>
 <section>
-<section id="slide-orgb4ae7ca">
-<h2 id="orgb4ae7ca">Predictive model</h2>
-<div class="outline-text-2" id="text-orgb4ae7ca">
+<section id="slide-orgb5a2639">
+<h2 id="orgb5a2639">Predictive model</h2>
+<div class="outline-text-2" id="text-orgb5a2639">
 </div>
 </section>
-<section id="slide-org7cd4522">
-<h3 id="org7cd4522">Linear model</h3>
+<section id="slide-orga3a4755">
+<h3 id="orga3a4755">Linear model</h3>
 
 <div class="figure">
 <p><img src="figures/mileage_fit.png" alt="mileage_fit.png" class="r-stretch" style="max-height: 70vh" />
@@ -398,8 +393,8 @@ Normal distribution around this line
 
 
 </section>
-<section id="slide-orgef80a77">
-<h3 id="orgef80a77">Feature selection</h3>
+<section id="slide-orga8bbb78">
+<h3 id="orga8bbb78">Feature selection</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -464,7 +459,7 @@ Most important features here
 
 
 </section>
-<section id="slide-orgef80a77-split">
+<section id="slide-orga8bbb78-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -518,8 +513,8 @@ Not so important features here
 
 
 </section>
-<section id="slide-org58cfbc7">
-<h3 id="org58cfbc7">Feature selection</h3>
+<section id="slide-orgb11c602">
+<h3 id="orgb11c602">Feature selection</h3>
 <ul>
 <li class="fragment appear">Include: mileage, year, car model, engine size and transmission.</li>
 
@@ -531,8 +526,8 @@ Not so important features here
 
 
 </section>
-<section id="slide-orgd3c569a">
-<h3 id="orgd3c569a">Parameter interpretation</h3>
+<section id="slide-org7de4af2">
+<h3 id="org7de4af2">Parameter interpretation</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -574,8 +569,8 @@ Not so important features here
 
 
 </section>
-<section id="slide-orgc82073d">
-<h3 id="orgc82073d">Parameter interpretation</h3>
+<section id="slide-orge1016a5">
+<h3 id="orge1016a5">Parameter interpretation</h3>
 <p>
 Price relative to "Automatic"
 </p>
@@ -613,8 +608,8 @@ Price relative to "Automatic"
 </table>
 
 </section>
-<section id="slide-orgdb17a77">
-<h3 id="orgdb17a77">Parameter interpretation</h3>
+<section id="slide-org53b408e">
+<h3 id="org53b408e">Parameter interpretation</h3>
 <p>
 Price relative to "1 Series"
 </p>
@@ -677,8 +672,8 @@ Price relative to "1 Series"
 
 
 </section>
-<section id="slide-org23aaf25">
-<h3 id="org23aaf25">Web interface prototype</h3>
+<section id="slide-org5790b2e">
+<h3 id="org5790b2e">Web interface prototype</h3>
 <div style="text-align:left">
 <form>
 </form>
@@ -697,8 +692,8 @@ Mention prediction interval - shows uncertainty
 
 
 </section>
-<section id="slide-org7bbfaf3">
-<h3 id="org7bbfaf3">Web interface prototype</h3>
+<section id="slide-org6ebb31a">
+<h3 id="org6ebb31a">Web interface prototype</h3>
 <p> <a href="https://svensmark.jp/dc_cert/predict_price/" target="_blank">https://svensmark.jp/dc_cert/predict_price/</a> </p>
 
 
@@ -711,19 +706,19 @@ Mention prediction interval - shows uncertainty
 </section>
 </section>
 <section>
-<section id="slide-org7fb453f">
-<h2 id="org7fb453f">Conclusion</h2>
+<section id="slide-org23aa22e">
+<h2 id="org23aa22e">Conclusion</h2>
 <ul>
 <li class="fragment appear">Built a linear model for predicting resale prices of BMW cars</li>
 <li class="fragment appear">Works fairly well</li>
-<li class="fragment appear">Model coeffficients are explainable</li>
+<li class="fragment appear">Model coefficients are explainable</li>
 <li class="fragment appear">Demonstrated web interface prototype</li>
 
 </ul>
 
 </section>
-<section id="slide-org28f014f">
-<h3 id="org28f014f">Going forward</h3>
+<section id="slide-org127ffeb">
+<h3 id="org127ffeb">Going forward</h3>
 <p style="text-align:left">
 Follow up with data collection team
 </p>
@@ -748,34 +743,34 @@ Web interface
 
 <ul>
 <li class="fragment appear">Improve design of web front end</li>
-<li class="fragment appear">Ensure scalability of back end depending on excpected usage</li>
+<li class="fragment appear">Ensure scalability of back end depending on expected usage</li>
 
 </ul>
 
 </section>
-<section id="slide-org89f2324">
-<h3 id="org89f2324">Thank you for your attention</h3>
+<section id="slide-orgea7e098">
+<h3 id="orgea7e098">Thank you for your attention</h3>
 <p>
-Any quetions?
+Any questions?
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org081153a">
-<h2 id="org081153a">Additional background</h2>
+<section id="slide-org8426c58">
+<h2 id="org8426c58">Additional background</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org175445a">
-<h2 id="org175445a">Metric</h2>
-<div class="outline-text-2" id="text-org175445a">
+<section id="slide-org38fc437">
+<h2 id="org38fc437">Metric</h2>
+<div class="outline-text-2" id="text-org38fc437">
 </div>
 </section>
-<section id="slide-orga09d5b7">
-<h3 id="orga09d5b7">R-squared (R<sup>2</sup>)</h3>
+<section id="slide-org7c71588">
+<h3 id="org7c71588">R-squared (R<sup>2</sup>)</h3>
 <ul>
 <li class="fragment appear">A number</li>
 <li class="fragment appear">Measure of how well the model describes the data</li>
@@ -787,13 +782,13 @@ Any quetions?
 </section>
 </section>
 <section>
-<section id="slide-orgd3e9bd0">
-<h2 id="orgd3e9bd0">Data</h2>
-<div class="outline-text-2" id="text-orgd3e9bd0">
+<section id="slide-org18856e2">
+<h2 id="org18856e2">Data</h2>
+<div class="outline-text-2" id="text-org18856e2">
 </div>
 </section>
-<section id="slide-org37e850f">
-<h3 id="org37e850f">Data model 2</h3>
+<section id="slide-org83e3872">
+<h3 id="org83e3872">Data model 2</h3>
 
 <div class="figure">
 <p><object type="image/svg+xml" data="figures/data_model2.svg" class="org-svg">
@@ -805,13 +800,13 @@ Sorry, your browser does not support SVG.</object>
 </section>
 </section>
 <section>
-<section id="slide-org029821a">
-<h2 id="org029821a">Predictive model</h2>
-<div class="outline-text-2" id="text-org029821a">
+<section id="slide-org3b56c68">
+<h2 id="org3b56c68">Predictive model</h2>
+<div class="outline-text-2" id="text-org3b56c68">
 </div>
 </section>
-<section id="slide-org3b35087">
-<h3 id="org3b35087">Additional assumption</h3>
+<section id="slide-orgda2cad9">
+<h3 id="orgda2cad9">Additional assumption</h3>
 <ul>
 <li>All car prices fall at the same rate with age and mileage,
 independent on car model and other factors</li>
@@ -828,8 +823,8 @@ Since the same model is applied across these variables
 
 
 </section>
-<section id="slide-org3fcbecd">
-<h3 id="org3fcbecd">Parameter interpretation</h3>
+<section id="slide-orgf5ea89c">
+<h3 id="orgf5ea89c">Parameter interpretation</h3>
 <p>
 Price relative to "1 Series"
 </p>
@@ -897,7 +892,7 @@ Price relative to "1 Series"
 </table>
 
 </section>
-<section id="slide-org3fcbecd-split">
+<section id="slide-orgf5ea89c-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -967,7 +962,7 @@ Price relative to "1 Series"
 </table>
 
 </section>
-<section id="slide-org3fcbecd-split">
+<section id="slide-orgf5ea89c-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1026,8 +1021,8 @@ Price relative to "1 Series"
 
 
 </section>
-<section id="slide-org616ebf6">
-<h3 id="org616ebf6">90% Prediction interval</h3>
+<section id="slide-orga2548dc">
+<h3 id="orga2548dc">90% Prediction interval</h3>
 <ul>
 <li class="fragment appear">90% of car prices expected to be within this interval</li>
 
@@ -1050,8 +1045,8 @@ Example:
 
 
 </section>
-<section id="slide-org0d32dc6">
-<h3 id="org0d32dc6">90% Prediction interval with partial data</h3>
+<section id="slide-org99432af">
+<h3 id="org99432af">90% Prediction interval with partial data</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1097,10 +1092,10 @@ Example:
 </section>
 </div>
 </div>
-<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/dist/reveal.js"></script>
-<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/markdown/markdown.js"></script>
-<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/zoom/zoom.js"></script>
-<script src="file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
 
 
 <script>

@@ -10,7 +10,7 @@ c = Config()
 
 
 # Configure our tag removal
-c.TagRemovePreprocessor.remove_cell_tags = ("pdf-ignore",)
+c.TagRemovePreprocessor.remove_cell_tags = ("no-export", "no-export-pdf",)
 c.TagRemovePreprocessor.remove_all_outputs_tags = ('remove_output',)
 c.TagRemovePreprocessor.remove_input_tags = ('remove_input',)
 

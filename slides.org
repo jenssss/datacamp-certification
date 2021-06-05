@@ -17,8 +17,10 @@
 # #+REVEAL_THEME: simple
 # #+REVEAL_THEME: solarized
 # #+REVEAL_THEME: moon
-#+REVEAL_ROOT: file:///home/jens/Dropbox/Postdoc2/presentation/reveal.js-4.1.0/
-# #+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+# #+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js
+# #+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js
+
 # #+REVEAL_PREAMBLE: <style type="text/css">   .reveal h1 { font-size: 1.7em;text-align: left } .reveal h2 { text-align: left } </style>  <style type="text/css"> .twocolumn { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px; text-align: left; }  </style>
 #+REVEAL_TITLE_SLIDE: <h1 class="title"> %t </h1>
 # #+REVEAL_TITLE_SLIDE: <h3 class=\"subtitle\"> %s </h2>
@@ -39,14 +41,9 @@
 # #+OPTIONS: reveal_title_sli:" lol "
 #+MACRO: NEWLINE @@latex:\\@@ @@html:<br>@@ @@ascii:|@@
 
-* My background
+* Source
 
-#+ATTR_REVEAL: :frag (appear)
-- Physicist
-- PhD in physics from Aarhus University, Denmark (2016)
-- Postdoc at Kansas State University (2017)
-- Assistant Professor at University of Electro-Communications, Tokyo, Japan (2018-now)
-
+Source code for this project available on [[https://github.com/jenssss/datacamp-certification][github]].
 
 * Problem statement
 
@@ -84,7 +81,7 @@ assess the model
 ** Source
 
 #+ATTR_REVEAL: :frag (appear)
-- Provided by Datacamp
+- Provided by [[https://github.com/datacamp/careerhub-data][Datacamp]]
 - No details about collection known
 
 ** Features
